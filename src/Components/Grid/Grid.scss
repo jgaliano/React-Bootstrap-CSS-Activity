@@ -1,0 +1,21 @@
+.col-1{
+    background-color: rgb(255, 255, 255);
+    width: 50%;
+}
+
+.col-2{
+    background-color: rgb(255, 255, 255);
+    width: auto;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+@media screen and (max-width: 750px) {
+    .contenedorInicial{
+        display: flex;
+        flex-direction: column;
+    }
+    .col-1{
+        margin-left: 20%;
+    }
+}
