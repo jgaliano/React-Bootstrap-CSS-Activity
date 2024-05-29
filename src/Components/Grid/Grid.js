@@ -5,8 +5,23 @@ import './Grid.scss'
 import '../Item/Item'
 import Item from '../Item/Item';
 import Input from '../Input/Input';
+import { useSelector } from 'react-redux';
+
 
 function Grid() {
+
+  const todos = useSelector ((state)=>state.todos.value)
+
+  // const tareas = [{
+  //   name: 'Programar',
+  //   desc: 'Renderizar proyecto',
+  //   date: '12/04/2025'
+  // },
+  // {
+  //   name: 'Running',
+  //   desc: '10km pista',
+  //   date: '12/12/2024'
+  // }]
   return (
     <Container>
       <Row className='contenedorInicial'>
@@ -14,21 +29,11 @@ function Grid() {
            <Input></Input>
         </Col>
         <Col className='col-2'>
-            <Item
-              name="Hacer Senderismo"
-              desc="Rutina de ejercicio semanal"
-              date="12/04/2025"  
+          { todos.map((tarea)=>(
+            <Item name={tarea.name} desc={tarea.desc} date={tarea.date}  
             ></Item>
-            <Item
-              name="Prácticar Natación"
-              desc="Ejercicio Diario"
-              date="02/07/2024"  
-            ></Item>
-            <Item
-              name="Hacer Senderismo"
-              desc="Rutina de ejercicio semanal"
-              date="12/04/2025"  
-            ></Item>
+          )) }
+           
         </Col>
       </Row>
     </Container>

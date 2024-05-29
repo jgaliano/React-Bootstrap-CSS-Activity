@@ -1,9 +1,26 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './Item.scss'
+import { 
+  removeTodo 
+} from '../../reducers/todoSlice';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import React from 'react';
+
+
+
 
 function Item(props) {
+
     const { name, desc, date} = props
+
+    const dispatch = useDispatch();
+
+    const handleRemove = (e) => {
+      dispatch(removeTodo({ name }));
+    };
+    
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
@@ -19,7 +36,7 @@ function Item(props) {
         <Card.Text>
           {date}
         </Card.Text>
-        <Button variant="primary">Remover</Button>
+        <Button variant="primary" onClick={handleRemove}>Remover</Button>
       </Card.Body>
     </Card>
   );
